@@ -1,0 +1,948 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Yash Khatri - AI Engineer & Business Analyst</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Epilogue:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #0A0E27;
+            --accent: #00D9FF;
+            --secondary: #FF3366;
+            --highlight: #FFE066;
+            --text: #E8E8E8;
+            --muted: #8B92A8;
+            --bg-dark: #050714;
+            --gradient-1: linear-gradient(135deg, #00D9FF 0%, #0066FF 100%);
+            --gradient-2: linear-gradient(135deg, #FF3366 0%, #FF6B99 100%);
+            --gradient-accent: linear-gradient(90deg, #00D9FF, #FF3366, #FFE066);
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Epilogue', sans-serif;
+            background: var(--bg-dark);
+            color: var(--text);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+        
+        /* Animated background */
+        .bg-wrapper {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            overflow: hidden;
+        }
+        
+        .bg-gradient {
+            position: absolute;
+            width: 200%;
+            height: 200%;
+            background: 
+                radial-gradient(circle at 20% 50%, rgba(0, 217, 255, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 80% 80%, rgba(255, 51, 102, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 40% 20%, rgba(255, 224, 102, 0.08) 0%, transparent 40%);
+            animation: bgFloat 20s ease-in-out infinite;
+        }
+        
+        @keyframes bgFloat {
+            0%, 100% { transform: translate(0, 0) rotate(0deg); }
+            33% { transform: translate(-5%, 5%) rotate(3deg); }
+            66% { transform: translate(5%, -5%) rotate(-3deg); }
+        }
+        
+        .grain {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0.03;
+            pointer-events: none;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 400 400' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+        }
+        
+        /* Header */
+        header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            padding: 1rem 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 1000;
+            background: rgba(5, 7, 20, 0.8);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+            animation: slideDown 0.8s ease-out;
+        }
+        
+        @keyframes slideDown {
+            from { transform: translateY(-100%); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+        
+        .logo {
+            font-family: 'Archivo Black', sans-serif;
+            font-size: 1.9rem;
+            background: var(--gradient-accent);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            letter-spacing: -0.02em;
+        }
+        
+        nav a {
+            color: var(--text);
+            text-decoration: none;
+            margin-left: 2rem;
+            font-weight: 400;
+            font-size: 0.95rem;
+            transition: color 0.3s ease;
+            position: relative;
+        }
+        
+        nav a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--accent);
+            transition: width 0.3s ease;
+        }
+        
+        nav a:hover::after {
+            width: 100%;
+        }
+        
+        nav a:hover {
+            color: var(--accent);
+        }
+        
+        /* Hero Section */
+        .hero {
+           
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            padding: 0 5%;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .hero-content {
+padding-top: 110px;
+            max-width: 1200px;
+            margin: 0 auto;
+            animation: fadeInUp 1s ease-out 0.3s both;
+        }
+        
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(40px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .hero-label {
+            display: inline-block;
+            padding: 0.5rem 1.9rem;
+            background: rgba(0, 217, 255, 0.1);
+            border: 1px solid var(--accent);
+            border-radius: 50px;
+            color: var(--accent);
+            font-size: 0.85rem;
+            font-weight: 600;
+            letter-spacing: 0.05em;
+            margin-bottom: 2rem;
+            animation: fadeInUp 1s ease-out 0.5s both;
+        }
+        
+        .hero h1 {
+            font-family: 'Archivo Black', sans-serif;
+            font-size: clamp(3rem, 8vw, 6rem);
+            line-height: 1.1;
+            margin-bottom: 1.5rem;
+            letter-spacing: -0.03em;
+            animation: fadeInUp 1s ease-out 0.7s both;
+        }
+        
+        .hero h1 .gradient-text {
+            background: var(--gradient-1);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .hero h1 .highlight {
+            color: var(--highlight);
+        }
+        
+        .hero-description {
+            font-size: 1.3rem;
+            color: var(--muted);
+            max-width: 700px;
+            margin-bottom: 3rem;
+            line-height: 1.8;
+            animation: fadeInUp 1s ease-out 0.9s both;
+        }
+        
+        .cta-group {
+            display: flex;
+            gap: 1.5rem;
+            flex-wrap: wrap;
+            animation: fadeInUp 1s ease-out 1.1s both;
+        }
+        
+        .btn {
+            padding: 1rem 2.5rem;
+            font-size: 1rem;
+            font-weight: 600;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            text-decoration: none;
+            display: inline-block;
+            transition: all 0.3s ease;
+            font-family: 'Epilogue', sans-serif;
+        }
+        
+        .btn-primary {
+            background: var(--gradient-1);
+            color: white;
+            box-shadow: 0 10px 30px rgba(0, 217, 255, 0.3);
+        }
+        
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 40px rgba(0, 217, 255, 0.4);
+        }
+        
+        .btn-secondary {
+            background: transparent;
+            color: var(--text);
+            border: 2px solid var(--text);
+        }
+        
+        .btn-secondary:hover {
+            background: var(--text);
+            color: var(--primary);
+            transform: translateY(-3px);
+        }
+        
+        /* Section Styles */
+        section {
+            padding: 8rem 5%;
+            max-width: 1400px;
+            margin: 0 auto;
+            position: relative;
+        }
+        
+        .section-header {
+            margin-bottom: 4rem;
+        }
+        
+        .section-label {
+            font-size: 0.9rem;
+            color: var(--accent);
+            font-weight: 700;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            margin-bottom: 1rem;
+        }
+        
+        .section-title {
+            font-family: 'Archivo Black', sans-serif;
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            line-height: 1.2;
+            letter-spacing: -0.02em;
+            margin-bottom: 1.5rem;
+        }
+        
+        .section-description {
+            font-size: 1.2rem;
+            color: var(--muted);
+            max-width: 700px;
+        }
+        
+        /* Experience Cards */
+        .experience-grid {
+            display: grid;
+            gap: 2rem;
+        }
+        
+        .experience-card {
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.03) 0%, rgba(255, 255, 255, 0.01) 100%);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            border-radius: 16px;
+            padding: 2.5rem;
+            position: relative;
+            overflow: hidden;
+            transition: all 0.4s ease;
+        }
+        
+        .experience-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 4px;
+            height: 0;
+            background: var(--gradient-1);
+            transition: height 0.4s ease;
+        }
+        
+        .experience-card:hover::before {
+            height: 100%;
+        }
+        
+        .experience-card:hover {
+            border-color: rgba(0, 217, 255, 0.3);
+            transform: translateX(10px);
+            background: linear-gradient(135deg, rgba(0, 217, 255, 0.05) 0%, rgba(255, 255, 255, 0.01) 100%);
+        }
+        
+        .experience-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 1.5rem;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+        
+        .experience-role {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--text);
+            margin-bottom: 0.3rem;
+        }
+        
+        .experience-company {
+            font-size: 1.1rem;
+            color: var(--accent);
+            font-weight: 600;
+        }
+        
+        .experience-duration {
+            font-size: 0.9rem;
+            color: var(--muted);
+            padding: 0.5rem 1rem;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 20px;
+        }
+        
+        .experience-description {
+            color: var(--muted);
+            line-height: 1.8;
+        }
+        
+        .experience-description ul {
+            margin-top: 1rem;
+            padding-left: 1.5rem;
+        }
+        
+        .experience-description li {
+            margin-bottom: 0.5rem;
+        }
+        
+        /* Skills Section */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+        
+        .skill-category {
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.03) 0%, rgba(255, 255, 255, 0.01) 100%);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            border-radius: 16px;
+            padding: 2rem;
+            transition: all 0.3s ease;
+        }
+        
+        .skill-category:hover {
+            border-color: rgba(255, 51, 102, 0.3);
+            background: linear-gradient(135deg, rgba(255, 51, 102, 0.05) 0%, rgba(255, 255, 255, 0.01) 100%);
+            transform: translateY(-5px);
+        }
+        
+        .skill-category h3 {
+            font-size: 1.3rem;
+            margin-bottom: 1.5rem;
+            color: var(--secondary);
+        }
+        
+        .skill-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.8rem;
+        }
+        
+        .skill-tag {
+            padding: 0.5rem 1rem;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 20px;
+            font-size: 0.85rem;
+            color: var(--text);
+            transition: all 0.3s ease;
+        }
+        
+        .skill-tag:hover {
+            background: var(--secondary);
+            border-color: var(--secondary);
+            transform: scale(1.05);
+        }
+        
+        /* Projects Section */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2.5rem;
+        }
+        
+        .project-card {
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.03) 0%, rgba(255, 255, 255, 0.01) 100%);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            border-radius: 20px;
+            padding: 0;
+            overflow: hidden;
+            transition: all 0.4s ease;
+        }
+        
+        .project-card:hover {
+            transform: translateY(-10px);
+            border-color: rgba(255, 224, 102, 0.3);
+            box-shadow: 0 20px 60px rgba(255, 224, 102, 0.2);
+        }
+        
+        .project-header {
+            padding: 2rem;
+            background: linear-gradient(135deg, rgba(255, 224, 102, 0.1) 0%, transparent 100%);
+        }
+        
+        .project-title {
+            font-size: 1.4rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            color: var(--highlight);
+        }
+        
+        .project-body {
+            padding: 2rem;
+        }
+        
+        .project-description {
+            color: var(--muted);
+            line-height: 1.7;
+        }
+        
+        /* Certifications */
+        .cert-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 1.5rem;
+        }
+        
+        .cert-item {
+            padding: 1.5rem;
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.02) 0%, rgba(255, 255, 255, 0.01) 100%);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            border-radius: 12px;
+            transition: all 0.3s ease;
+        }
+        
+        .cert-item:hover {
+            border-color: var(--accent);
+            background: linear-gradient(135deg, rgba(0, 217, 255, 0.05) 0%, rgba(255, 255, 255, 0.01) 100%);
+        }
+        
+        .cert-item h4 {
+            color: var(--text);
+            margin-bottom: 0.5rem;
+            font-size: 1.1rem;
+        }
+        
+        /* Contact Section */
+        .contact-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+        
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+            padding: 2rem;
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.03) 0%, rgba(255, 255, 255, 0.01) 100%);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            border-radius: 12px;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            color: var(--text);
+        }
+        
+        .contact-item:hover {
+            border-color: var(--accent);
+            transform: translateY(-5px);
+            background: linear-gradient(135deg, rgba(0, 217, 255, 0.05) 0%, rgba(255, 255, 255, 0.01) 100%);
+        }
+        
+        .contact-icon {
+            width: 60px;
+            height: 60px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.8rem;
+            flex-shrink: 0;
+        }
+        
+        .contact-item:nth-child(1) .contact-icon {
+            background: var(--gradient-1);
+        }
+        
+        .contact-item:nth-child(2) .contact-icon {
+            background: var(--gradient-2);
+        }
+        
+        .contact-item:nth-child(3) .contact-icon {
+            background: linear-gradient(135deg, #FFE066 0%, #FF9966 100%);
+        }
+        
+        .contact-item:nth-child(4) .contact-icon {
+            background: linear-gradient(135deg, #00D9FF 0%, #00FF88 100%);
+        }
+        
+        .contact-info h4 {
+            font-size: 0.85rem;
+            color: var(--muted);
+            margin-bottom: 0.5rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            font-weight: 600;
+        }
+        
+        .contact-info p {
+            font-size: 1rem;
+            font-weight: 500;
+            line-height: 1.4;
+            word-break: break-all;
+        }
+        
+        /* Footer */
+        footer {
+            padding: 3rem 5%;
+            text-align: center;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+            color: var(--muted);
+        }
+        
+        /* Scroll animations */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            animation: fadeInUp 0.8s ease-out forwards;
+        }
+        
+        .stagger-1 { animation-delay: 0.1s; }
+        .stagger-2 { animation-delay: 0.2s; }
+        .stagger-3 { animation-delay: 0.3s; }
+        .stagger-4 { animation-delay: 0.4s; }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            header {
+                padding: 1rem 3%;
+            }
+            
+            nav {
+                display: none;
+            }
+            
+            .hero {
+                padding: 0 3%;
+                min-height: 90vh;
+            }
+            
+            section {
+                padding: 5rem 3%;
+            }
+            
+            .cta-group {
+                flex-direction: column;
+            }
+            
+            .btn {
+                width: 100%;
+                text-align: center;
+            }
+            
+            .projects-grid,
+            .skills-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="bg-wrapper">
+        <div class="bg-gradient"></div>
+        <div class="grain"></div>
+    </div>
+    
+    <header>
+        <div class="logo">YK</div>
+        <nav>
+            <a href="#about">About</a>
+            <a href="#experience">Experience</a>
+            <a href="#skills">Skills</a>
+            <a href="#projects">Projects</a>
+            <a href="#contact">Contact</a>
+        </nav>
+    </header>
+    
+    <section class="hero">
+        <div class="hero-content">
+            <div class="hero-label">AI ENGINEER × BUSINESS ANALYST × LEADER</div>
+            <h1>
+                Hi, I'm <span class="gradient-text">Yash Khatri</span><br>
+                Building the Future with <span class="highlight">Data & AI</span>
+            </h1>
+            <p class="hero-description">
+                Passionate AI & Data Science professional bridging business analysis, machine learning, and leadership to deliver impactful solutions. Currently empowering careers at Edverciity and leading change as President of Rotaract Club of Nagpur.
+            </p>
+            <div class="cta-group">
+                <a href="#contact" class="btn btn-primary">Get In Touch</a>
+                <a href="https://drive.google.com/file/d/1n_20mITIZC4_yuSgfphXjfmKcrnZvnBr/view?usp=drive_link" target="_blank" class="btn btn-secondary">Download Resume</a>
+                <a href="https://linktr.ee/yasssh" target="_blank" class="btn btn-secondary">View Portfolio</a>
+            </div>
+        </div>
+    </section>
+    
+    <section id="about">
+        <div class="section-header fade-in">
+            <div class="section-label">About Me</div>
+            <h2 class="section-title">Combining Technology with Purpose</h2>
+            <p class="section-description">
+                B.Tech graduate in Artificial Intelligence & Data Science with a foundation in analytics, problem-solving, and data-driven decision-making. My journey bridges business analysis, AI/ML, and leadership, enabling me to deliver solutions that align technology with organizational goals.
+            </p>
+        </div>
+        
+        <div class="experience-grid">
+            <div class="experience-card fade-in stagger-1">
+                <div class="experience-header">
+                    <div>
+                        <h3 class="experience-role">Business Analyst</h3>
+                        <p class="experience-company">EDVERCIITY - Empowering Careers!</p>
+                    </div>
+                    <div class="experience-duration">May 2025 - Present</div>
+                </div>
+                <div class="experience-description">
+                    <p>Building impactful AI-driven solutions and enhancing product intelligence through machine learning and generative AI. Working on projects that blend AI, data science, and education technology to improve user experience and automate insights supporting learning and career outcomes.</p>
+                </div>
+            </div>
+            
+            <div class="experience-card fade-in stagger-2">
+                <div class="experience-header">
+                    <div>
+                        <h3 class="experience-role">Data Analyst (Internship)</h3>
+                        <p class="experience-company">Edverciity By LiveTechSkills</p>
+                    </div>
+                    <div class="experience-duration">Jan 2024 - Jun 2024</div>
+                </div>
+                <div class="experience-description">
+                    <p>Successfully completed a 6-month internship focusing on Business Intelligence. Honed skills in Python, Statistics, Machine Learning, Power BI, and SQL to solve real-world challenges. Applied technical knowledge, enhanced problem-solving abilities, and collaborated on impactful projects.</p>
+                </div>
+            </div>
+            
+            <div class="experience-card fade-in stagger-3">
+                <div class="experience-header">
+                    <div>
+                        <h3 class="experience-role">Project Coordinator (Internship)</h3>
+                        <p class="experience-company">Solar Industries (DART Team)</p>
+                    </div>
+                    <div class="experience-duration">Internship Offered</div>
+                </div>
+                <div class="experience-description">
+                    <p>Offered internship position to strengthen expertise in project execution, stakeholder collaboration, and cross-functional management through coordinating complex projects in the defense and aerospace sector.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <section id="experience">
+        <div class="section-header fade-in">
+            <div class="section-label">Leadership Journey</div>
+            <h2 class="section-title">Making a Difference</h2>
+        </div>
+        
+        <div class="experience-grid">
+            <div class="experience-card fade-in stagger-1">
+                <div class="experience-header">
+                    <div>
+                        <h3 class="experience-role">President</h3>
+                        <p class="experience-company">Rotaract Club of Nagpur</p>
+                    </div>
+                    <div class="experience-duration">July 2025 - Present</div>
+                </div>
+                <div class="experience-description">
+                    <p>Leading with vision, fostering collaboration, and driving initiatives reflecting fellowship, leadership, and service. Committed to impactful projects, growth opportunities, and creating lasting change in the community.</p>
+                </div>
+            </div>
+            
+            <div class="experience-card fade-in stagger-2">
+                <div class="experience-header">
+                    <div>
+                        <h3 class="experience-role">President</h3>
+                        <p class="experience-company">FOR-AIM (Forum of Recognized AI Members)</p>
+                    </div>
+                    <div class="experience-duration">June 2021 - May 2025</div>
+                </div>
+                <div class="experience-description">
+                    <p>Led the official departmental student forum of AI & Data Science at KDK College of Engineering. Key achievements include:</p>
+                    <ul>
+                        <li>Spearheaded technical events, workshops, and hackathons centered around AI and emerging technologies</li>
+                        <li>Strengthened industry-academia collaboration through expert sessions and certification programs</li>
+                        <li>Fostered a culture of innovation, leadership, and teamwork within the department</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="experience-card fade-in stagger-3">
+                <div class="experience-header">
+                    <div>
+                        <h3 class="experience-role">Vice President & International Service Director</h3>
+                        <p class="experience-company">Rotaract Club of Nagpur</p>
+                    </div>
+                    <div class="experience-duration">July 2023 - June 2025</div>
+                </div>
+                <div class="experience-description">
+                    <p>Contributed to community initiatives, fostered leadership, and built global connections. Focused on cultural exchange, international collaborations, and service projects aligned with Rotary International's vision.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <section id="skills">
+        <div class="section-header fade-in">
+            <div class="section-label">Expertise</div>
+            <h2 class="section-title">Technical Arsenal</h2>
+        </div>
+        
+        <div class="skills-grid">
+            <div class="skill-category fade-in stagger-1">
+                <h3>Business & Analytics</h3>
+                <div class="skill-tags">
+                    <span class="skill-tag">Business Analysis</span>
+                    <span class="skill-tag">Requirement Gathering</span>
+                    <span class="skill-tag">Data Analytics</span>
+                    <span class="skill-tag">Data Visualization</span>
+                    <span class="skill-tag">Power BI</span>
+                    <span class="skill-tag">SQL</span>
+                </div>
+            </div>
+            
+            <div class="skill-category fade-in stagger-2">
+                <h3>AI & Machine Learning</h3>
+                <div class="skill-tags">
+                    <span class="skill-tag">Machine Learning</span>
+                    <span class="skill-tag">Generative AI</span>
+                    <span class="skill-tag">LangChain</span>
+                    <span class="skill-tag">Chatbots</span>
+                    <span class="skill-tag">Python</span>
+                    <span class="skill-tag">LLVM</span>
+                </div>
+            </div>
+            
+            <div class="skill-category fade-in stagger-3">
+                <h3>Management & Leadership</h3>
+                <div class="skill-tags">
+                    <span class="skill-tag">Project Management</span>
+                    <span class="skill-tag">Team Leadership</span>
+                    <span class="skill-tag">Mentorship</span>
+                    <span class="skill-tag">Stakeholder Management</span>
+                    <span class="skill-tag">Cross-functional Collaboration</span>
+                </div>
+            </div>
+            
+            <div class="skill-category fade-in stagger-4">
+                <h3>Technical Stack</h3>
+                <div class="skill-tags">
+                    <span class="skill-tag">Statistics</span>
+                    <span class="skill-tag">Data Science</span>
+                    <span class="skill-tag">AI/DS</span>
+                    <span class="skill-tag">Business Intelligence</span>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <section id="projects">
+        <div class="section-header fade-in">
+            <div class="section-label">Innovations</div>
+            <h2 class="section-title">Featured Projects</h2>
+        </div>
+        
+        <div class="projects-grid">
+            <div class="project-card fade-in stagger-1">
+                <div class="project-header">
+                    <h3 class="project-title">Carbon Sequestration Estimation</h3>
+                </div>
+                <div class="project-body">
+                    <p class="project-description">
+                        Case study of Heartfulness Campus, Yerla, Nagpur. Applied data analytics and AI methodologies to measure environmental impact and support sustainability initiatives through quantitative analysis.
+                    </p>
+                    <a href="https://github.com/TheYasssh/Estimation-of-Carbon-Sequestration-Project-Yerla-Nagpur" target="_blank" style="color: var(--highlight); font-size: 0.95rem; text-decoration: none; display: inline-block; margin-top: 1rem; font-weight: 600;">View Project →</a>
+                </div>
+            </div>
+            
+            <div class="project-card fade-in stagger-2">
+                <div class="project-header">
+                    <h3 class="project-title">AI-Powered Code Reviewer</h3>
+                </div>
+                <div class="project-body">
+                    <p class="project-description">
+                        An intelligent Python code review tool that provides automated suggestions for code improvements, style checks, and best practices using AI technology. Helps developers write cleaner, more efficient code.
+                    </p>
+                    <a href="https://huggingface.co/spaces/Yasssh/AI-Powered-Code-Reviewer" target="_blank" style="color: var(--highlight); font-size: 0.95rem; text-decoration: none; display: inline-block; margin-top: 1rem; font-weight: 600;">Try Live Demo →</a>
+                </div>
+            </div>
+            
+            <div class="project-card fade-in stagger-3">
+                <div class="project-header">
+                    <h3 class="project-title">Optimal Water Usage Prediction</h3>
+                </div>
+                <div class="project-body">
+                    <p class="project-description">
+                        Streamlit application that predicts optimal water requirements for crops using a trained Random Forest model. Users input soil, crop, and environmental parameters to receive predictions with actionable optimization tips for sustainable irrigation and efficient water management.
+                    </p>
+                    <a href="https://huggingface.co/spaces/Yasssh/Optimal-Water-Usage-Prediction" target="_blank" style="color: var(--highlight); font-size: 0.95rem; text-decoration: none; display: inline-block; margin-top: 1rem; font-weight: 600;">Try Live Demo →</a>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <section id="certifications">
+        <div class="section-header fade-in">
+            <div class="section-label">Credentials</div>
+            <h2 class="section-title">Certifications & Awards</h2>
+        </div>
+        
+        <div class="cert-grid">
+            <div class="cert-item fade-in stagger-1">
+                <h4>Oracle Cloud Infrastructure 2025 Certified Generative AI Professional</h4>
+                <a href="https://catalog-education.oracle.com/ords/certview/sharebadge?id=44918369036B49A7351445F629B87B321D4240B1B7C3D88BA0EA8F242EB54D05" target="_blank" style="color: var(--accent); font-size: 0.9rem; text-decoration: none; display: inline-block; margin-top: 0.5rem;">Verify Certificate →</a>
+            </div>
+            <div class="cert-item fade-in stagger-2">
+                <h4>Fortinet Certified Fundamentals Cybersecurity</h4>
+                <a href="https://www.credly.com/badges/a84e0a19-d9e9-419d-bfbc-c825b94baa93/linked_in_profile" target="_blank" style="color: var(--accent); font-size: 0.9rem; text-decoration: none; display: inline-block; margin-top: 0.5rem;">Verify Certificate →</a>
+            </div>
+            <div class="cert-item fade-in stagger-3">
+                <h4>Getting Started with Enterprise Data Science</h4>
+                <a href="https://www.credly.com/badges/93d8d6db-e82c-4409-8bb1-a9f8c50b895b/linked_in_profile" target="_blank" style="color: var(--accent); font-size: 0.9rem; text-decoration: none; display: inline-block; margin-top: 0.5rem;">Verify Certificate →</a>
+            </div>
+            <div class="cert-item fade-in stagger-4">
+                <h4>First Runner-up - Hackengers'22 Coding Competition, Chennai</h4>
+                <a href="https://www.linkedin.com/posts/theyasssh_livewireindia-livetechskills-codingquestions-activity-7135607267281825794-g1Tu?utm_source=share&utm_medium=member_desktop" target="_blank" style="color: var(--accent); font-size: 0.9rem; text-decoration: none; display: inline-block; margin-top: 0.5rem;">View Achievement →</a>
+            </div>
+            <div class="cert-item fade-in stagger-1">
+                <h4>Merit Award for Academic Excellence</h4>
+                <a href="https://www.linkedin.com/posts/theyasssh_gratitude-achievement-aiandds-activity-7292168858382016512-7dg7?utm_source=share&utm_medium=member_desktop" target="_blank" style="color: var(--accent); font-size: 0.9rem; text-decoration: none; display: inline-block; margin-top: 0.5rem;">View Achievement →</a>
+            </div>
+            <div class="cert-item fade-in stagger-2">
+                <h4>What is Generative AI?</h4>
+                <a href="https://www.linkedin.com/learning/certificates/385f1d1f64e7e3ff39364cc2d3e1a232bc3ced2e93b99808819cc6f039c6eeac" target="_blank" style="color: var(--accent); font-size: 0.9rem; text-decoration: none; display: inline-block; margin-top: 0.5rem;">Verify Certificate →</a>
+            </div>
+            <div class="cert-item fade-in stagger-3">
+                <h4>Machine Learning Foundation - AWS Academy</h4>
+                <a href="https://www.credly.com/badges/bcd5d078-0020-468a-900e-7e64d9f6a56a/linked_in_profile" target="_blank" style="color: var(--accent); font-size: 0.9rem; text-decoration: none; display: inline-block; margin-top: 0.5rem;">Verify Certificate →</a>
+            </div>
+            <div class="cert-item fade-in stagger-2">
+                <h4>Devfest 2025</h4>
+                <a href="https://www.creadefy.com/verify/CERT-95C17F1C-FF25-44F8" target="_blank" style="color: var(--accent); font-size: 0.9rem; text-decoration: none; display: inline-block; margin-top: 0.5rem;">Verify Certificate →</a>
+            </div>
+        </div>
+    </section>
+    
+    <section id="contact">
+        <div class="section-header fade-in">
+            <div class="section-label">Let's Connect</div>
+            <h2 class="section-title">Get In Touch</h2>
+            <p class="section-description">
+                Open to collaborating on projects and initiatives that combine business insights with AI-driven innovation. Let's create insights together!
+            </p>
+        </div>
+        
+        <div class="contact-grid">
+            <a href="/cdn-cgi/l/email-protection#a4cdc5c9ddc5d7cccfccc5d0d6cd8a9494e4c3c9c5cdc88ac7cbc9" class="contact-item fade-in stagger-1">
+                <div class="contact-icon">✉️</div>
+                <div class="contact-info">
+                    <h4>Email</h4>
+                    <p><span class="__cf_email__" data-cfemail="d9b0b8b4a0b8aab1b2b1b8adabb0f7e9e999beb4b8b0b5f7bab6b4">[email&#160;protected]</span></p>
+                </div>
+            </a>
+            
+            <a href="tel:+918999078897" class="contact-item fade-in stagger-2">
+                <div class="contact-icon">📞</div>
+                <div class="contact-info">
+                    <h4>Phone</h4>
+                    <p>+91 8999078897</p>
+                </div>
+            </a>
+            
+            <a href="https://www.linkedin.com/in/theyasssh" target="_blank" class="contact-item fade-in stagger-3">
+                <div class="contact-icon">🔗</div>
+                <div class="contact-info">
+                    <h4>LinkedIn</h4>
+                    <p>theyasssh</p>
+                </div>
+            </a>
+            
+            <a href="https://linktr.ee/yasssh" target="_blank" class="contact-item fade-in stagger-4">
+                <div class="contact-icon">🌐</div>
+                <div class="contact-info">
+                    <h4>Portfolio</h4>
+                    <p>linktr.ee/yasssh</p>
+                </div>
+            </a>
+        </div>
+    </section>
+    
+    <footer>
+        <p>&copy; 2026 Yash Khatri. Built with ❤️ for innovation and impact.</p>
+    </footer>
+    
+    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+        // Smooth scroll
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+            });
+        });
+        
+        // Intersection Observer for scroll animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0
