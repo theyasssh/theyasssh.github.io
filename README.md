@@ -247,10 +247,10 @@ This project is open source and available under the [MIT License](LICENSE).
 **Yash Khatri**
 - Email: iamyashkhatri.00@gmail.com
 - LinkedIn: [theyasssh](https://www.linkedin.com/in/theyasssh/)
-- GitHub: [@TheYasssh](https://github.com/TheYasssh)
-- Twitter: [@TheYasssh](https://x.com/TheYasssh)
-- Instagram: [@the_yasssh](https://www.instagram.com/the_yasssh)
-- Portfolio: [linktr.ee/yasssh](https://linktr.ee/yasssh)
+- GitHub: [@theyasssh](https://github.com/theyasssh)
+- Twitter: [@theyasssh](https://x.com/theyasssh)
+- Instagram: [@theyasssh](https://www.instagram.com/theyasssh)
+- Portfolio: [linktr.ee/theyasssh](https://linktr.ee/theyasssh)
 
 ## 🙏 Acknowledgments
 
@@ -265,7 +265,6 @@ This project is open source and available under the [MIT License](LICENSE).
 - [ ] Integrate a contact form with backend
 - [ ] Add dark/light theme toggle
 - [ ] Include more project case studies
-- [ ] Add testimonials section
 - [ ] Implement analytics tracking
 - [ ] Add language switching (Hindi/English)
 
