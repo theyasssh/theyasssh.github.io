@@ -30,7 +30,7 @@ This is my personal portfolio website built with clean HTML, CSS, and JavaScript
 
 ## 🚀 Live Demo
 
-Visit the live site: [Your GitHub Pages URL]
+Visit the live site: https://theyasssh.github.io/
 
 ## 📋 Sections
 
