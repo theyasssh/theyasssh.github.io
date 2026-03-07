@@ -1,5 +1,14 @@
 # Yash Khatri - Portfolio Website
 
+<p align="center">
+  <img src="assets/Github Social1.jpg" alt="Yash Khatri Banner" width="100%">
+</p>
+
+<h2 align="center">Yash Khatri</h2>
+<p align="center">
+Data Scientist • AI Engineer • Data Engineer
+</p>
+
 A modern, animated portfolio website showcasing my work as an AI Engineer & Business Analyst. Built with pure HTML, CSS, and JavaScript - no frameworks required.
 
 [![Live Demo](https://img.shields.io/badge/demo-live-brightgreen)](https://theyasssh.github.io)
