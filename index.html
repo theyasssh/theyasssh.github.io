@@ -3,27 +3,14 @@
 
 <head>
   <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<title>Yash Khatri — AI Engineer</title>
-
-<meta name="description" content="Portfolio of Yash Khatri — AI Engineer, Business Analyst & Data Science Specialist showcasing AI, ML, and Full Stack projects.">
-<meta name="robots" content="index, follow">
-<meta name="author" content="Yash Khatri">
-
-<!-- Open Graph for LinkedIn / social sharing -->
-<meta property="og:title" content="Yash Khatri — AI Engineer">
-<meta property="og:description" content="Portfolio showcasing AI, Machine Learning, and Full Stack development projects by Yash Khatri.">
-<meta property="og:url" content="https://theyashkhatri.dev">
-<meta property="og:type" content="website">
-
-<!-- Favicon -->
-<!-- <link rel="icon" href="/favicon.ico" type="image/x-icon"> -->
-
-<!-- Fonts -->
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=Space+Mono:ital,wght@0,400;0,700;1,400&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Yash Khatri — AI Engineer</title>
+  <meta name="description" content="Portfolio of Yash Khatri — AI Engineer, Business Analyst & Data Science Specialist">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=Space+Mono:ital,wght@0,400;0,700;1,400&family=Outfit:wght@300;400;500;600&display=swap"
+    rel="stylesheet">
   <style>
     *,
     *::before,
@@ -1284,6 +1271,47 @@
       white-space: nowrap;
     }
 
+    .project-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.6rem;
+      margin-top: 1.2rem;
+    }
+
+    .project-link-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      padding: 0.45rem 0.9rem;
+      border: 1px solid rgba(0, 229, 255, 0.3);
+      border-radius: 6px;
+      font-size: 0.72rem;
+      font-family: var(--font-mono);
+      color: var(--accent);
+      text-decoration: none;
+      font-weight: 600;
+      letter-spacing: 0.05em;
+      transition: all 0.25s;
+      background: rgba(0, 229, 255, 0.04);
+    }
+
+    .project-link-btn:hover {
+      background: rgba(0, 229, 255, 0.12);
+      border-color: var(--accent);
+      transform: translateY(-2px);
+    }
+
+    .cert-card-link {
+      text-decoration: none;
+      color: inherit;
+      display: contents;
+    }
+
+    .cert-card a {
+      text-decoration: none;
+      color: inherit;
+    }
+
     .research-grid {
       display: grid;
       grid-template-columns: 1fr 400px;
@@ -2324,6 +2352,12 @@
           </div>
           <div class="project-tech"><span>Python</span><span>Data Analytics</span><span>AI</span><span>Research</span>
           </div>
+          <div class="project-links">
+            <a href="https://huggingface.co/spaces/Yasssh/Estimation_of_Carbon_Sequestration_Yerla_Project_Nagpur"
+              target="_blank" rel="noopener" class="project-link-btn">🤗 HuggingFace ↗</a>
+            <a href="https://jrpsjournal.in/index.php/j/article/view/71" target="_blank" rel="noopener"
+              class="project-link-btn">📄 Research Paper ↗</a>
+          </div>
         </div>
       </div>
       <div class="project-card reveal">
@@ -2342,6 +2376,10 @@
           </div>
           <div class="project-tech"><span>Generative
               AI</span><span>Python</span><span>NLP</span><span>HuggingFace</span></div>
+          <div class="project-links">
+            <a href="https://huggingface.co/spaces/Yasssh/AI-Powered-Code-Reviewer" target="_blank" rel="noopener"
+              class="project-link-btn">🤗 Live Demo ↗</a>
+          </div>
         </div>
       </div>
       <div class="project-card reveal">
@@ -2360,6 +2398,10 @@
           </div>
           <div class="project-tech"><span>Random Forest</span><span>Streamlit</span><span>ML</span><span>Python</span>
           </div>
+          <div class="project-links">
+            <a href="https://huggingface.co/spaces/Yasssh/Optimal-Water-Usage-Prediction" target="_blank" rel="noopener"
+              class="project-link-btn">🤗 Live Demo ↗</a>
+          </div>
         </div>
       </div>
       <div class="project-card reveal">
@@ -2377,6 +2419,12 @@
           </div>
           <div class="project-tech"><span>NLP</span><span>Python</span><span>ML</span><span>AI</span><span>Text
               Analysis</span></div>
+          <div class="project-links">
+            <a href="https://github.com/theyasssh/AuthenticPlagAI" target="_blank" rel="noopener"
+              class="project-link-btn">⭐ GitHub ↗</a>
+            <a href="https://huggingface.co/spaces/Yasssh/AuthenticPlagAI" target="_blank" rel="noopener"
+              class="project-link-btn">🤗 Live Demo ↗</a>
+          </div>
         </div>
       </div>
     </div>
@@ -2468,48 +2516,66 @@
       <p class="section-subtitle">Committed to continuous growth through industry-recognized programs.</p>
     </div>
     <div class="cert-grid">
-      <div class="cert-card reveal">
-        <div class="cert-icon">☁️</div>
-        <div>
-          <div class="cert-name">Oracle Cloud Infrastructure 2025 Certified Gen AI Professional</div>
-          <div class="cert-issuer">Oracle</div>
+      <a href="https://www.credly.com/badges/a84e0a19-d9e9-419d-bfbc-c825b94baa93/linked_in_profile" target="_blank"
+        rel="noopener" style="text-decoration:none;color:inherit">
+        <div class="cert-card reveal">
+          <div class="cert-icon">☁️</div>
+          <div>
+            <div class="cert-name">Oracle Cloud Infrastructure 2025 Certified Gen AI Professional</div>
+            <div class="cert-issuer">Oracle · Verify ↗</div>
+          </div>
         </div>
-      </div>
-      <div class="cert-card reveal">
-        <div class="cert-icon">🔒</div>
-        <div>
-          <div class="cert-name">Fortinet Certified Fundamentals Cybersecurity</div>
-          <div class="cert-issuer">Fortinet</div>
+      </a>
+      <a href="https://www.credly.com/badges/a84e0a19-d9e9-419d-bfbc-c825b94baa93/linked_in_profile" target="_blank"
+        rel="noopener" style="text-decoration:none;color:inherit">
+        <div class="cert-card reveal">
+          <div class="cert-icon">🔒</div>
+          <div>
+            <div class="cert-name">Fortinet Certified Fundamentals Cybersecurity</div>
+            <div class="cert-issuer">Fortinet · Verify ↗</div>
+          </div>
         </div>
-      </div>
-      <div class="cert-card reveal">
-        <div class="cert-icon">📊</div>
-        <div>
-          <div class="cert-name">Getting Started with Enterprise Data Science</div>
-          <div class="cert-issuer">IBM / Coursera</div>
+      </a>
+      <a href="https://www.credly.com/badges/93d8d6db-e82c-4409-8bb1-a9f8c50b895b/linked_in_profile" target="_blank"
+        rel="noopener" style="text-decoration:none;color:inherit">
+        <div class="cert-card reveal">
+          <div class="cert-icon">📊</div>
+          <div>
+            <div class="cert-name">Getting Started with Enterprise Data Science</div>
+            <div class="cert-issuer">IBM / Coursera · Verify ↗</div>
+          </div>
         </div>
-      </div>
-      <div class="cert-card reveal">
-        <div class="cert-icon">🤖</div>
-        <div>
-          <div class="cert-name">What is Generative AI?</div>
-          <div class="cert-issuer">LinkedIn Learning</div>
+      </a>
+      <a href="https://www.linkedin.com/learning/certificates/385f1d1f64e7e3ff39364cc2d3e1a232bc3ced2e93b99808819cc6f039c6eeac"
+        target="_blank" rel="noopener" style="text-decoration:none;color:inherit">
+        <div class="cert-card reveal">
+          <div class="cert-icon">🤖</div>
+          <div>
+            <div class="cert-name">What is Generative AI?</div>
+            <div class="cert-issuer">LinkedIn Learning · View ↗</div>
+          </div>
         </div>
-      </div>
-      <div class="cert-card reveal">
-        <div class="cert-icon">☁️</div>
-        <div>
-          <div class="cert-name">Machine Learning Foundation</div>
-          <div class="cert-issuer">AWS Academy</div>
+      </a>
+      <a href="https://www.credly.com/badges/386b0dc7-70f5-4e9d-83e5-1d2e6bea8865/linked_in_profile" target="_blank"
+        rel="noopener" style="text-decoration:none;color:inherit">
+        <div class="cert-card reveal">
+          <div class="cert-icon">☁️</div>
+          <div>
+            <div class="cert-name">Machine Learning Foundation</div>
+            <div class="cert-issuer">AWS Academy · Verify ↗</div>
+          </div>
         </div>
-      </div>
-      <div class="cert-card reveal">
-        <div class="cert-icon">🎉</div>
-        <div>
-          <div class="cert-name">Devfest 2025</div>
-          <div class="cert-issuer">Google Developer Groups</div>
+      </a>
+      <a href="https://www.creadefy.com/verify/CERT-95C17F1C-FF25-44F8" target="_blank" rel="noopener"
+        style="text-decoration:none;color:inherit">
+        <div class="cert-card reveal">
+          <div class="cert-icon">🎉</div>
+          <div>
+            <div class="cert-name">Devfest 2025</div>
+            <div class="cert-issuer">Google Developer Groups · Verify ↗</div>
+          </div>
         </div>
-      </div>
+      </a>
     </div>
   </section>
 
